@@ -1,0 +1,83 @@
+export ECHANGELOG_USER="Mike Glazer <Mike.Glazer@jpl.nasa.gov>"
+
+export MAVEN_OPTS="-Xmx2048m"
+export GRAILS_HOME="$HOME/bin/grails"
+export GRAILS_BIN="$GRAILS_HOME/bin"
+
+export PATH="$GRAILS_BIN:/Applications/Adobe Flex Builder 3/Player/mac/10/mac/Flash Player.app/Contents/MacOS:/opt/local/bin:/usr/local/bin:/Applications/flex_sdk_3/bin:/usr/bin:/bin:/usr/sbin:$PATH"
+
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+
+alias vi="vim"
+alias svi="sudo vim"
+alias s="sudo"
+alias commit="cvs commit"
+alias src='rezsh'
+alias revim=". ~/.vimrc"
+alias javalib="cd $HOME/Documents/JavaLibraries"
+alias stsws="cd $HOME/Documents/workspace-sts"
+alias ws="cd $HOME/Documents/workspace"
+alias fgdms="cd $HOME/Documents/AptanaStudio/FGDMS"
+
+# Coding aliases
+alias indentc='indent -st -bad -bap -bli0 -i4 -l79 -npcs -nps1 -lc79 -fc1'
+alias starteclimd='/Applications/eclipse/eclimd& > /dev/null'
+alias bnd='java -jar $HOME/Documents/JavaLibraries/bnd.jar'
+alias roo='/Applications/springsource/spring-roo-1.0.0.RC4/bin/roo.sh'
+
+alias lastlog='cat `ls *.log | sort | tail -1`'
+
+function fgr() {
+    PATTERN=$1
+    START=$2
+
+    if [ -z $2 ]; then
+        START='.'
+    fi
+
+    grep -H -n -R --include="*" --color -e $PATTERN $START
+}
+
+
+#alias fgr='grep -H -n -R --include="*" --color -e'
+alias fgri='grep -H -n -R --include="*" --color -i -e'
+
+alias ssh='ssh -X'
+alias sshx='ssh'
+
+alias xslt='java org.apache.xalan.xslt.Process'
+
+alias gitd='sudo -u git git-daemon --base-path=/Users/git/repositories --export-all --enable=receive-pack'
+
+alias g='/usr/bin/mvim'
+alias qlf='qlmanag -p "$@" >& /dev/null'
+alias ls='ls -G -F'
+alias l='ls -G -lh'
+alias ll='ls -G -l'
+alias la='ls -lha'
+
+buildclasspath()
+{
+    CLASSPATH=""
+    for file in $1/*.jar; do
+        CLASSPATH=$file:$CLASSPATH
+    done
+}
+
+grepjar() {
+    if [ -z $1 ]; then
+        echo "Must supply a search term"
+        return
+    fi
+
+    for file in *.jar; do
+        echo "$file:"
+        jar -tvf $file | grep $1
+    done
+}
+
+rezsh() {
+    zcompile ~/.zshrc
+    zcompile ~/.zcompdump
+}
+

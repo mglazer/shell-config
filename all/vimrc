@@ -1,0 +1,75 @@
+set nocompatible
+"set background=dark
+"if !has("gui_running")
+"   set t_Co=256
+"endif
+":colorscheme peaksea " pretty colors
+set ruler
+set mouse=a
+set tabstop=4
+set sw=4
+set backspace=2
+set showmatch
+syntax on
+set foldmethod=marker
+"set number
+
+
+filetype indent on
+au BufNewFile,BufRead *.tex set spell cindent shiftwidth=4
+" .gra files for 11-721
+au BufNewFile,BufRead *.gra set filetype=lisp autoindent
+" For flex development
+au BufNewFile,BufRead *.as set filetype=actionscript
+au BufNewFile,BufRead *.mxml set filetype=mxml
+
+augroup mkd
+    autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
+augroup END
+
+set textwidth=80
+"set lbr
+set expandtab
+
+"insert one character
+noremap <C-x> 	i<Space><Esc>r
+
+filetype plugin on
+set grepprg=grep\ -nH\
+
+:iab #t /***************************************************************
+:iab #b <space>***************************************************************/
+
+map ,* :call CommentLinePincer('/*','*/')<CR>+
+map ,/ :call CommentLineToEnd('//')<CR>+
+
+" allow the switching of buffers with C-TAB
+let g:miniBufExplMapCTabSwitchBufs = 1
+
+function! Gnome()
+   set ts=8
+   if !exists("autocommands_loaded")
+      let autocommands_loaded = 1
+      augroup C
+         autocmd BufRead *.c set cindent
+      augroup END
+   endif
+endfunction
+
+map ,g :call Gnome()<CR>+
+
+let g:DoxygenToolkit_authorName="Mike Glazer (mglazer)"
+let g:DoxygenToolkit_blockHeader="******************************************************************************"
+let g:DoxygenToolkit_blockFooter="******************************************************************************"
+
+
+" work around for Vim 7.0 and Latex-Suite problems
+let g:tex_flavor='latex'
+
+inoremap <C-l> <C-x><C-o>
+nmap <C-tab> :tabnext<CR>
+nmap <C-S-tab> :tabprevious<CR>
+nmap <C-t> :tabnew<CR>
+
+nnoremap <silent> <F6> :TlistToggle<CR>
+let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
