@@ -149,7 +149,7 @@ alias -g W='|wc -l'
 alias -g S='|sort'
  
 # directory aliases
-src=~/src
+# src=~/src
  
 #alias for ssh tunnels
 alias tun="ssh -f -N "
