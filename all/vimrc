@@ -8,11 +8,72 @@ set ruler
 set mouse=a
 set tabstop=4
 set sw=4
-set backspace=2
+set softtabstop=4
+"set backspace=2
 set showmatch
 syntax on
 set foldmethod=marker
 "set number
+set encoding=utf-8
+set scrolloff=3
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+set ttyfast
+set backspace=indent,eol,start
+set laststatus=2
+set relativenumber
+set undofile
+
+let mapleader = ","
+
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+" clear out a search with ,<space>
+nnoremap <leader><space> :noh<cr>
+" use tab to match bracket pairs
+nnoremap <tab> %
+vnoremap <tab> %
+
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
+
+" autosave on lose focus
+au FocusLost * :wa
+
+" jj goes to normal mode, hmmm
+inoremap jj <ESC>
+
+
+" creates a new vertical split and switches over to it
+nnoremap <leader>w <C-w>v<C-w>l
+
+" Switch between splits easily
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" remaps ,a to :Ack
+nnoremap <leader>a :Ack
+
+" auto change to the directory of the current file I'm working on
+autocmd BufEnter * lcd %:p:h
+
+:colorscheme molokai
+
 
 
 filetype indent on
@@ -73,3 +134,4 @@ nmap <C-t> :tabnew<CR>
 
 nnoremap <silent> <F6> :TlistToggle<CR>
 let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
+
