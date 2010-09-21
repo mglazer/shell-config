@@ -1,11 +1,11 @@
 " Author:  Eric Van Dewoestine
 "
 " Description: {{{
-"   see http://eclim.sourceforge.net/vim/java/ant/run.html
+"   see http://eclim.org/vim/java/ant/run.html
 "
 " License:
 "
-" Copyright (C) 2005 - 2009  Eric Van Dewoestine
+" Copyright (C) 2005 - 2010  Eric Van Dewoestine
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
@@ -25,8 +25,10 @@
 " Auto Commands {{{
 augroup eclim_ant_make
   autocmd!
-  autocmd QuickFixCmdPost make call eclim#java#test#ResolveQuickfixResults('junit')
-  autocmd QuickFixCmdPost make call eclim#java#test#ResolveQuickfixResults('testng')
+  if exists('*eclim#java#test#ResolveQuickfixResults')
+    autocmd QuickFixCmdPost make call eclim#java#test#ResolveQuickfixResults('junit')
+    autocmd QuickFixCmdPost make call eclim#java#test#ResolveQuickfixResults('testng')
+  endif
 augroup END
 " }}}
 

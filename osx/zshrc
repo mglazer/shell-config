@@ -23,7 +23,7 @@ LS_COLORS='no=0:fi=0:di=1;34:ln=1;36:pi=40;33:so=1;35:do=1;35:bd=40;33;1:cd=40;3
 ZLS_COLORS="$LS_COLORS"
  
 COLORTERM=yes
-PATH=$PATH:$HOME/.cabal/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:~/bin
+PATH=$PATH:/opt/local/bin:$HOME/.cabal/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:~/bin
  
 # history saves 50,000 in it if we want to open it
 # only the last 1000 are part of backward searching

@@ -37,28 +37,33 @@ home directory.
 For Windows users there are a couple alternatives to the unsupported
 .eclimrc:
 
-   - Your first option is to add a new environment variable:
+   1. Your first option is to add a new environment variable:
 
-      - Windows 2000: Control Panel > System > Advanced > Environment VariablesWindows XP: Control Panel > Performance And Maintenance > System >
+      - Windows 2000: Control Panel > System > Advanced > Environment Variables
+        Windows XP: Control Panel > Performance And Maintenance > System >
         Advanced > Environment Variables
 
-      - Under "User variables..." click "New..."Variable Name: ECLIMD_OPTSVariable Value: -Dosgi.instance.area.default=@user.home/another_workspace
+      - Under "User variables..." click "New..."
+        Variable Name: ECLIMD_OPTS
+        Variable Value: -Dosgi.instance.area.default=@user.home/another_workspace
 
       - Then you can start eclimd as normal (via the eclimd.bat file).
 
-   - The second option is to create a shortcut to the eclimd.bat file:
+   2. The second option is to create a shortcut to the eclimd.bat
+      file:
 
-     - In Windows Explorer, open your eclipse folder.
+      - In Windows Explorer, open your eclipse folder.
 
-     - Hold down the right mouse button and drag the eclimd.bat file
-       to where you want the shortcut to exist (like your desktop) and
-       release the right mouse button.
+      - Hold down the right mouse button and drag the eclimd.bat file
+        to where you want the shortcut to exist (like your desktop)
+        and release the right mouse button.
 
-     - Choose "Create Shortcut(s) Here"
+      - Choose "Create Shortcut(s) Here"
 
-     - Right click the shortcut and choose "Properties"
+      - Right click the shortcut and choose "Properties"
 
-     - On the "Shortcut" tab edit the "Target:" field and append:-Dosgi.instance.area.default=@user.home/another_workspace
+      - On the "Shortcut" tab edit the "Target:" field and append:
+        -Dosgi.instance.area.default=@user.home/another_workspace
 
 *eclim_proxy*
 
@@ -131,7 +136,8 @@ couple options:
 
 If you are using the headed version of eclimd, then setting the jvm
 memory arguments for eclim is the same procedure as setting them for
-eclipse.  Details can be found on the eclipse wiki.
+eclipse.  Details can be found on the eclipse wiki
+(http://wiki.eclipse.org/Eclipse.ini).
 
 *eclim_troubleshoot*
 
@@ -141,5 +147,13 @@ How do I troubleshoot features not functioning, or errors encountered?
 
 For troubleshooting eclim, please see the dedicated troubleshooting
 guide (|guides-troubleshoot|).
+
+*eclim_full_headless*
+
+
+How can I run eclimd on a truly headless server?
+================================================
+
+Please see the headless guide (|guides-headless|).
 
 vim:ft=eclimhelp

@@ -5,7 +5,7 @@
 "
 " License:
 "
-" Copyright (C) 2005 - 2009  Eric Van Dewoestine
+" Copyright (C) 2005 - 2010  Eric Van Dewoestine
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
@@ -61,9 +61,12 @@ function! eclim#regex#OpenTestWindow(lang)
     let filename = expand('%:p')
 
     exec "botright 10split " . file
+    let b:eclim_temp_window = 1
+
     setlocal ft=regex
     setlocal winfixheight
     setlocal bufhidden=delete
+    setlocal nobuflisted
     setlocal nobackup
     setlocal nowritebackup
 
@@ -107,6 +110,18 @@ function! s:Evaluate(lang)
   let matchIndex = 0
   for result in results
     let groups = split(result, '|')
+    let groupIndex = 0
+    if len(groups) > 1
+      for group in groups[1:]
+        let patterns = s:BuildPatterns(group)
+        for pattern in patterns
+          exec 'syntax match ' . g:EclimRegexGroupHi{groupIndex % 2} .
+            \ ' /' . pattern . '/ '
+        endfor
+        let groupIndex += 1
+      endfor
+    endif
+
     let match = groups[0]
     let patterns = s:BuildPatterns(match)
 
@@ -117,19 +132,6 @@ function! s:Evaluate(lang)
     endfor
 
     let matchIndex += 1
-
-    let groupIndex = 0
-    if len(groups) > 1
-      let groups = groups[1:]
-      for group in groups
-        let patterns = s:BuildPatterns(group)
-        for pattern in patterns
-          exec 'syntax match ' . g:EclimRegexGroupHi{groupIndex % 2} .
-            \ ' /' . pattern . '/ '
-        endfor
-        let groupIndex += 1
-      endfor
-    endif
   endfor
 endfunction "}}}
 

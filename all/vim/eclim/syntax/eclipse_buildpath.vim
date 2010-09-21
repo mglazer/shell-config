@@ -1,6 +1,7 @@
 " Author:  Eric Van Dewoestine
 "
 " Description: {{{
+"  Syntax file for eclipse .projectOptions files.
 "
 " License:
 "
@@ -21,37 +22,6 @@
 "
 " }}}
 
-runtime ftplugin/xml.vim
-runtime indent/xml.vim
-
-" Global Variables {{{
-
-if !exists("g:EclimWsdlValidate")
-  let g:EclimWsdlValidate = 1
-endif
-
-" }}}
-
-" Autocmd {{{
-
-if g:EclimWsdlValidate
-  augroup eclim_wsdl_validate
-    autocmd! BufWritePost <buffer>
-    autocmd BufWritePost <buffer> call eclim#lang#Validate('wsdl', 1)
-  augroup END
-endif
-
-" disable plain xml validation.
-augroup eclim_xml
-  autocmd! BufWritePost <buffer>
-augroup END
-
-" }}}
-
-" Command Declarations {{{
-
-command! -nargs=0 -buffer Validate :call eclim#lang#Validate('wsdl', 0)
-
-" }}}
+runtime! syntax/xml.vim
 
 " vim:ft=vim:fdm=marker

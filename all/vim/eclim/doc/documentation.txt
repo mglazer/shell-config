@@ -1,3 +1,6 @@
+*documentation*
+
+
 Documentation
 *************
 
@@ -40,8 +43,6 @@ Documentation
 - Ruby (|vim-ruby-index|)
 
 - Vim (|vim-vim-index|)
-
-- Wsdl (|vim-wsdl-index|)
 
 - Xml (|vim-xml-index|)
 
