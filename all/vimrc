@@ -72,6 +72,10 @@ nnoremap <leader>a :Ack
 " auto change to the directory of the current file I'm working on
 autocmd BufEnter * lcd %:p:h
 
+nnoremap <leader>p4a :!p4 add %:e
+nnoremap <leader>p4e :!p4 edit %:e
+nnoremap <leader>p4d :!p4 diff %
+
 :colorscheme molokai
 
 
@@ -87,10 +91,6 @@ au BufNewFile,BufRead *.mxml set filetype=mxml
 augroup mkd
     autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
 augroup END
-
-set textwidth=80
-"set lbr
-set expandtab
 
 "insert one character
 noremap <C-x> 	i<Space><Esc>r

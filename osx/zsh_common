@@ -38,6 +38,7 @@ alias revim=". ~/.vimrc"
 alias javalib="cd $HOME/Documents/JavaLibraries"
 alias stsws="cd $HOME/Documents/workspace-sts"
 alias ws="cd /Users/mglazer/Documents/workspaces/p4/mglazer-mglazer-i/mglazer-mglazer-4225113/main"
+alias sfpass="cat /usr/share/tomcat5/conf/mglazer.properties | grep 'salesforceConfig.password' | cut -d':' -f2 | pbcopy"
 
 mkcd() {
     mkdir -p $1 && cd $1
