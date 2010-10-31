@@ -28,6 +28,8 @@ set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
 set undofile
+set nobackup
+set noswapfile
 
 let mapleader = ","
 
@@ -72,12 +74,11 @@ nnoremap <leader>a :Ack
 " auto change to the directory of the current file I'm working on
 autocmd BufEnter * lcd %:p:h
 
-nnoremap <leader>p4a :!p4 add %:e
-nnoremap <leader>p4e :!p4 edit %:e
-nnoremap <leader>p4d :!p4 diff %
+runtime perforce/perforcemenu.vim
 
 :colorscheme molokai
 
+:let g:p4CmdPath = '~/bin/p4'
 
 
 filetype indent on

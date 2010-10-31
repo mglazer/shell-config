@@ -9,7 +9,7 @@ export GRADLE_BIN="$GRADLE_HOME/bin"
 export GRADLE_OPTS="$GRADLE_OPTS -Xmx1024m"
 
 
-export PATH="/opt/git/bin:/opt/memcached/bin:$GRADLE_BIN:$GRAILS_BIN:/Applications/Adobe Flex Builder 3/Player/mac/10/mac/Flash Player.app/Contents/MacOS:/opt/local/bin:/usr/local/bin:/Applications/flex_sdk_3/bin:/usr/bin:/bin:/usr/sbin:$PATH"
+export PATH="/opt/local/bin:/opt/git/bin:/opt/memcached/bin:$HOME/scala/bin:$GRADLE_BIN:$GRAILS_BIN:/Applications/Adobe Flex Builder 3/Player/mac/10/mac/Flash Player.app/Contents/MacOS:/opt/local/bin:/usr/local/bin:/Applications/flex_sdk_3/bin:/usr/bin:/bin:/usr/sbin:$PATH"
 
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
 
@@ -119,11 +119,18 @@ rezsh() {
 }
 
 ny() {
+	DOMAIN=".px.qc"
     remote_to_server $1 "nym008" $2
 }
 
 dc() {
+	DOMAIN=".px.qc"
     remote_to_server $1 "wdc009" $2
+}
+
+qa() {
+	DOMAIN=".sfoffice.qc"
+	remote_to_server $1 "sfqa" $2 
 }
 
 remote_to_server() {
@@ -141,7 +148,12 @@ remote_to_server() {
         cmd=$3
     fi
 
-    ${cmd} www-${hostname}-${serverNumber}.px.qc
+	local domain=".px.qc"
+	if [ ! -z $DOMAIN ]; then
+		domain=$DOMAIN
+	fi
+
+    ${cmd} www-${hostname}-${serverNumber}${domain}
 }
 
 
