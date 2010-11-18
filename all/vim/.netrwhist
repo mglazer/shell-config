@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/mglazer/Documents/workspaces/p4/mglazer-mglazer-i/mglazer-mglazer-4225113/main/inference/src/com/quantcast/armor/jobs/panelcount/data'
 let g:netrw_dirhist_2='/Users/mglazer/Documents/workspaces/p4/mglazer-mglazer-i/mglazer-mglazer-4225113/main/website/scala'
 let g:netrw_dirhist_3='/Users/mglazer/Documents/workspaces/p4/mglazer-mglazer-i/mglazer-mglazer-4225113/main/website/bvt/com/quantcast/htmlunit'
 let g:netrw_dirhist_4='/Users/mglazer/chef-repo/cookbooks/multi_tomcat7'
 let g:netrw_dirhist_5='/Users/mglazer/chef-repo/cookbooks'
 let g:netrw_dirhist_6='/Users/mglazer/Documents/workspaces/p4/mglazer-mglazer-i/mglazer-mglazer-4225113/branches/release/website/25/website'
+let g:netrw_dirhist_7='/opt/nginx/html/quantcast-wordpress/.git'
+let g:netrw_dirhist_8='/opt/nginx/html/quantcast-wordpress/qc-support'

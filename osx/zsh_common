@@ -1,5 +1,6 @@
 export ECHANGELOG_USER="Mike Glazer <Mike.Glazer@jpl.nasa.gov>"
 
+export JAVA_OPTS="-Dsolr.solr.home=/opt/apache-solr/solr-home"
 export MAVEN_OPTS="-Xmx2048m"
 export GRAILS_HOME="$HOME/bin/grails"
 export GRAILS_BIN="$GRAILS_HOME/bin"
@@ -14,7 +15,7 @@ export PATH="/opt/local/bin:/opt/git/bin:/opt/memcached/bin:$HOME/scala/bin:$GRA
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
 
 export JREBEL_HOME=/Applications/ZeroTurnaround/JRebel
-export CATALINA_HOME=/usr/share/tomcat5
+export CATALINA_HOME=/usr/share/tomcat7
 
 #export CATALINA_OPTS="$JAVA_OPTS -Xbootclasspath/a:$CATALINA_HOME/common/aspectjrt.jar -Dglassbox.force.no.install=true -Dglassbox.install.dir=$CATALINA_HOME/common/lib/glassbox -Xms512m -Xmx1024m -XX:MaxPermSize=768m -Dfscommon.default.buffer.size=32768 -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Dsite.app.environment=development -Dcom.implicitlabs.rmr.RowCacheAccessFactoryDomain=obama.sfoffice.qc -Dcom.implicitlabs.rmr.RowCacheAccessFactoryPathPrefix=dragonfly -Dprefetch.datafiles=false"
 #export CATALINA_OPTS="$JAVA_OPTS -Xbootclasspath/a:$CATALINA_HOME/common/aspectjrt.jar -Dglassbox.force.no.install=true -Dglassbox.install.dir=$CATALINA_HOME/common/lib/glassbox -Xms512m -Xmx1024m -XX:MaxPermSize=768m -Dfscommon.default.buffer.size=32768 -Xdebug -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Dsite.app.environment=development -Dprefetch.datafiles=false -noverify -javaagent:$JREBEL_HOME/jrebel.jar"
@@ -37,7 +38,10 @@ alias src='rezsh'
 alias revim=". ~/.vimrc"
 alias javalib="cd $HOME/Documents/JavaLibraries"
 alias stsws="cd $HOME/Documents/workspace-sts"
-alias ws="cd /Users/mglazer/Documents/workspaces/p4/mglazer-mglazer-i/mglazer-mglazer-4225113/main"
+
+export WORKSPACE=/Users/mglazer/Documents/workspaces/p4/mglazer-mglazer-i/mglazer-mglazer-4225113/main
+alias ws="cd $WORKSPACE"
+alias wp="cd $WORKSPACE/website/scripts/wordpress-installation"
 alias sfpass="cat /usr/share/tomcat5/conf/mglazer.properties | grep 'salesforceConfig.password' | cut -d':' -f2 | pbcopy"
 
 mkcd() {
@@ -54,8 +58,8 @@ alias lastlog='cat `ls *.log | sort | tail -1`'
 
 alias mcd='memcached -m 100 -l 127.0.0.1 -p 11211 -d'
 
-alias tcstart='/usr/share/tomcat5/bin/startup.sh'
-alias tcstop='/usr/share/tomcat5/bin/shutdown.sh'
+alias tcstart='$CATALINA_HOME/bin/startup.sh'
+alias tcstop='$CATALINA_HOME/bin/shutdown.sh'
 alias tcrestart='tcstop; sleep 2; tcstart'
 function tckill() {
  kill -9 `jps | grep 'Bootstrap' | cut -f1 -d' ' | paste -`

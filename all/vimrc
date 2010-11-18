@@ -118,7 +118,7 @@ function! Gnome()
    endif
 endfunction
 
-map ,g :call Gnome()<CR>+
+"map ,g :call Gnome()<CR>+
 
 let g:DoxygenToolkit_authorName="Mike Glazer (mglazer)"
 let g:DoxygenToolkit_blockHeader="******************************************************************************"
