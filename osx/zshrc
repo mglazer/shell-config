@@ -11,6 +11,7 @@ FIGNORE='.o:.out:~'
 #DISPLAY=:0.0
 
 . ~/.zsh_common
+. ~/.git-flow-completion.zsh
  
 # colored filename/directory completion
 # Attribute codes:

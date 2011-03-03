@@ -1,7 +1,13 @@
-export ECHANGELOG_USER="Mike Glazer <Mike.Glazer@jpl.nasa.gov>"
+export ECHANGELOG_USER="Mike Glazer <mglazer@quantcast.com>"
+
+
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+
+export JREBEL_HOME=/Applications/ZeroTurnaround/JRebel
+export CATALINA_HOME=/usr/share/tomcat7
 
 export JAVA_OPTS="-Dsolr.solr.home=/opt/apache-solr/solr-home"
-export MAVEN_OPTS="-Xmx2048m"
+export MAVEN_OPTS="-Xmx2048m -noverify -javaagent:$JREBEL_HOME/jrebel.jar"
 export GRAILS_HOME="$HOME/bin/grails"
 export GRAILS_BIN="$GRAILS_HOME/bin"
 export GRADLE_HOME="$HOME/Applications/gradle"
@@ -12,10 +18,6 @@ export GRADLE_OPTS="$GRADLE_OPTS -Xmx1024m"
 
 export PATH="/opt/local/bin:/opt/git/bin:/opt/memcached/bin:$HOME/scala/bin:$GRADLE_BIN:$GRAILS_BIN:/Applications/Adobe Flex Builder 3/Player/mac/10/mac/Flash Player.app/Contents/MacOS:/opt/local/bin:/usr/local/bin:/Applications/flex_sdk_3/bin:/usr/bin:/bin:/usr/sbin:$PATH"
 
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
-
-export JREBEL_HOME=/Applications/ZeroTurnaround/JRebel
-export CATALINA_HOME=/usr/share/tomcat7
 
 #export CATALINA_OPTS="$JAVA_OPTS -Xbootclasspath/a:$CATALINA_HOME/common/aspectjrt.jar -Dglassbox.force.no.install=true -Dglassbox.install.dir=$CATALINA_HOME/common/lib/glassbox -Xms512m -Xmx1024m -XX:MaxPermSize=768m -Dfscommon.default.buffer.size=32768 -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Dsite.app.environment=development -Dcom.implicitlabs.rmr.RowCacheAccessFactoryDomain=obama.sfoffice.qc -Dcom.implicitlabs.rmr.RowCacheAccessFactoryPathPrefix=dragonfly -Dprefetch.datafiles=false"
 #export CATALINA_OPTS="$JAVA_OPTS -Xbootclasspath/a:$CATALINA_HOME/common/aspectjrt.jar -Dglassbox.force.no.install=true -Dglassbox.install.dir=$CATALINA_HOME/common/lib/glassbox -Xms512m -Xmx1024m -XX:MaxPermSize=768m -Dfscommon.default.buffer.size=32768 -Xdebug -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Dsite.app.environment=development -Dprefetch.datafiles=false -noverify -javaagent:$JREBEL_HOME/jrebel.jar"
@@ -38,6 +40,16 @@ alias src='rezsh'
 alias revim=". ~/.vimrc"
 alias javalib="cd $HOME/Documents/JavaLibraries"
 alias stsws="cd $HOME/Documents/workspace-sts"
+
+function p4changediff() {
+	if [ -z $1 ]; then
+		echo "$0 [perforce change number]"
+		return
+	fi
+	
+	p4 opened -c $1 | awk 'BEGIN { FS = "#" } // { print "p4 diff -du " $1 }' | csh
+}
+
 
 export WORKSPACE=/Users/mglazer/Documents/workspaces/p4/mglazer-mglazer-i/mglazer-mglazer-4225113/main
 alias ws="cd $WORKSPACE"
