@@ -34,6 +34,7 @@ export GANT_HOME="/opt/local/share/java/gant"
 
 alias vi="vim"
 alias svi="sudo vim"
+alias vim='mvim -v'
 alias s="sudo"
 alias commit="cvs commit"
 alias src='rezsh'
