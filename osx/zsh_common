@@ -18,6 +18,8 @@ export GRADLE_OPTS="$GRADLE_OPTS -Xmx1024m"
 
 export PATH="/opt/local/bin:/opt/git/bin:/opt/memcached/bin:$HOME/scala/bin:$GRADLE_BIN:$GRAILS_BIN:/Applications/Adobe Flex Builder 3/Player/mac/10/mac/Flash Player.app/Contents/MacOS:/opt/local/bin:/usr/local/bin:/Applications/flex_sdk_3/bin:/usr/bin:/bin:/usr/sbin:$PATH"
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
 
 #export CATALINA_OPTS="$JAVA_OPTS -Xbootclasspath/a:$CATALINA_HOME/common/aspectjrt.jar -Dglassbox.force.no.install=true -Dglassbox.install.dir=$CATALINA_HOME/common/lib/glassbox -Xms512m -Xmx1024m -XX:MaxPermSize=768m -Dfscommon.default.buffer.size=32768 -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Dsite.app.environment=development -Dcom.implicitlabs.rmr.RowCacheAccessFactoryDomain=obama.sfoffice.qc -Dcom.implicitlabs.rmr.RowCacheAccessFactoryPathPrefix=dragonfly -Dprefetch.datafiles=false"
 #export CATALINA_OPTS="$JAVA_OPTS -Xbootclasspath/a:$CATALINA_HOME/common/aspectjrt.jar -Dglassbox.force.no.install=true -Dglassbox.install.dir=$CATALINA_HOME/common/lib/glassbox -Xms512m -Xmx1024m -XX:MaxPermSize=768m -Dfscommon.default.buffer.size=32768 -Xdebug -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Dsite.app.environment=development -Dprefetch.datafiles=false -noverify -javaagent:$JREBEL_HOME/jrebel.jar"
@@ -102,7 +104,7 @@ alias xslt='java org.apache.xalan.xslt.Process'
 
 alias gitd='sudo -u git git-daemon --base-path=/Users/git/repositories --export-all --enable=receive-pack'
 
-alias g='/usr/bin/mvim'
+alias g='mvim'
 alias qlf='qlmanag -p "$@" >& /dev/null'
 alias ls='ls -G -F'
 alias l='ls -G -lh'
